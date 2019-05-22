@@ -75,17 +75,17 @@
 
 
 
-<meta name="description" content="&amp;lt;!DOCTYPE HTML&amp;gt;">
+<meta name="description" content="本博客使用 Hexo+NexT 构建，所有的文档资源均开源于 Github 上，如果你喜欢这些文章，请在 GitHub 上关注我。">
 <meta property="og:type" content="website">
-<meta property="og:title" content="404">
-<meta property="og:url" content="https://mr-solution.github.io/Notes/404/index.html">
+<meta property="og:title" content="about">
+<meta property="og:url" content="https://mr-solution.github.io/Notes/about/index.html">
 <meta property="og:site_name" content="Forty-two">
-<meta property="og:description" content="&amp;lt;!DOCTYPE HTML&amp;gt;">
+<meta property="og:description" content="本博客使用 Hexo+NexT 构建，所有的文档资源均开源于 Github 上，如果你喜欢这些文章，请在 GitHub 上关注我。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-01-21T08:42:24.427Z">
+<meta property="og:updated_time" content="2019-01-23T04:05:21.964Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="404">
-<meta name="twitter:description" content="&amp;lt;!DOCTYPE HTML&amp;gt;">
+<meta name="twitter:title" content="about">
+<meta name="twitter:description" content="本博客使用 Hexo+NexT 构建，所有的文档资源均开源于 Github 上，如果你喜欢这些文章，请在 GitHub 上关注我。">
 
 
 
@@ -117,7 +117,7 @@
 
 
 
-  <link rel="canonical" href="https://mr-solution.github.io/Notes/404/">
+  <link rel="canonical" href="https://mr-solution.github.io/Notes/about/">
 
 
 
@@ -302,7 +302,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://mr-solution.github.io/Notes/Notes/2019/01/21/linux-guide/">
+    <link itemprop="mainEntityOfPage" href="https://mr-solution.github.io/Notes/Notes/2019/01/23/linux-guide/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Mr-Solution">
@@ -331,7 +331,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-21T15:58:06+08:00">2019-01-21</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-23T12:05:21+08:00">2019-01-23</time>
             
 
             
@@ -391,25 +391,25 @@
       
         <h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><h2 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h2><p>Linux是一个免费的类 unix 操作系统，基于 POSIX 和 UNIX 的多用户、多任务、支持多线程和多 CPU 的操作系统。以网络为核心，性能稳定。<br><a id="more"></a><br>Windows 操作系统跟 Linux 操作系统在设计哲学上存在着巨大的区别。Windows 系统将各种功能都集中的操作系统内部，而 Linux 的内核空间与用户空间有明显的界限。Windows 的设计是为了让用户更方便的交互，所以对图形化界面 GUI 的支持特别好。Linux 操作系统以网络为核心，以文本为信息的载体，Linux 的核心设计思想为：一切皆为文件，所以它本质上是一个基于文本的命令行操作系统，图像对 Linux 系统来说是个包袱，Linux 对 GUI 的支持是很差的，GUI 在一定程度上会影响系统的稳定性，Linux 服务器均没有图形界面。</p>
 <p>严格来讲，Linux 是指 Linux Kernel，我们平时用到的 Linux OS 一般都是基于这个 Kernel 制作的发行版（Redhat, debian, Centos, SuSE, Fedora等）。Ubuntu 基于debian，Centos 基于 Redhat，debian 基础核心小，稳定，占用资源少，Centos 去除了很多与服务器无关的应用，系统简单稳定。二者都是非常适合做服务器的操作系统。</p>
-<p><img src="/Notes/2019/01/21/linux-guide/kernel&amp;shell.jpg" alt="div align=center"></p>
+<p><img src="/Notes/2019/01/23/linux-guide/kernel&amp;shell.jpg" alt="div align=center"></p>
 <p>Linux 本身没有图形界面，linux 是一个基于命令行的操作系统，图形界面得益于 X windows。</p>
 <h2 id="X-Windows"><a href="#X-Windows" class="headerlink" title="X Windows"></a>X Windows</h2><p>X Windows (1984诞生于 MIT) 也被叫做“X”，“X 11”，是为了在 UNIX 系统上使用图形界面而开发的系统。X 一开始就是针对网络而设计的，采用了“client-server”模型，“X server”运行在计算机上，用来管理显示信息，处理来自键盘和鼠标的输入信息，并与其他输入输出设备交互。每一个 X 应用程序（比如 XTerm，Terminal，浏览器等）就是一个“X client”，客户给服务器发信息，例如：”请在这些坐标显示鼠标轨迹“等等。</p>
 <p>如果只有一台计算机，那么可以在同一台计算机上运行 X server 和 X client，当有多台计算机的时候，可以在一台计算机上运行 X 应用程序，通过网络传递信息，在另一台计算机上接收信息，并由 X server 处理，由本机 X client 显示。例如 Exceed、telnet、teamviewer 等远程 X window软件。</p>
 <p>严格地说，X 并不是一个软件，它更类似于 HTTP 协议、IP 协议，一个基于 X 的应用程序需要运行并显示内容的时候，就连接到 X 服务器，用 X 协议和服务器交谈，X 服务器提供一些接口供客户使用。同时，X 服务器还负责捕捉键盘和鼠标的动作，并通知 X 程序。</p>
 <p>我们打开 Ubuntu 16 系统，看到的桌面系统默认为 Unity 7。常用的桌面系统还有 KDE、Gnome、xfce等。这些桌面系统都集成了 X Windows，它们与基本系统的耦合度都很低，这种低耦合的优点在于，当图形界面出问题的时候，可以进入命令行模式（ctrl+alt+F1-F6）进行修复。</p>
 <p><strong>Linux 图形界面层次关系如下：</strong></p>
-<p>Linux kernel -&gt; X server <- x="" 协议="" -=""> 桌面环境 -&gt; X 应用程序。</-></p>
+<p>Linux kernel  -->  X server &lt;-- X 协议 --> 桌面环境 --> X 应用程序。</p>
 <h2 id="Shell"><a href="#Shell" class="headerlink" title="Shell"></a>Shell</h2><p>shell 是命令解释器，它解释由用户输入的命令并把它们送到内核，是用户使用 Linux 的桥梁。用户通过 shell 同 kernel 交互，shell 就像是包裹在 kernel 外面的一层蛋壳，故名 shell。有很多人用不同的方式编写实现了这种命令解释器，shell 是这些软件的统称，它是独立于 Linux kernel 的一种软件，一般的 Linux 发行版都使用 Bash 解释器。</p>
 <p>shell 软件虽然有很多种，但是它们都是使用文本指令，而且这些文本指令都是一样的。不管使用的什么发行版的系统，使用的什么类型的图形界面，文本指令都是统一的，用户可以很方便地在不同的发行版间切换，另外，文字指令在远程联机的时候有无可比拟的速度优势。因此，牢记一些常用的 shell 指令是很有必要的。</p>
 <h2 id="常用的-Bash-命令"><a href="#常用的-Bash-命令" class="headerlink" title="常用的 Bash 命令"></a>常用的 Bash 命令</h2><p>Bash 是一个为 GNU 计划编写的 Unix shell，是在 Bourne shell(史蒂夫·伯恩于1978年编写)的基础上编写的，全称为 Bourne-Again shell(这是一个双关语 Bourne again/born again)。</p>
 <h3 id="文件与目录"><a href="#文件与目录" class="headerlink" title="文件与目录"></a>文件与目录</h3><p>前面提过，Unix/Linux 的设计思想是：一切皆文件。Linux 内的所有的一切都是以字节流的形式来呈现的，包括进程、线程、套接字、IO设备等等。所以整个 Linux 系统最重要的地方就是目录树结构。所谓的目录树结构就是以根目录为主，向下呈现分支状的目录结构。整个目录树最重要的就是根目录（root directory，表示方法为 “/“）。目录树结构如下图所示：</p>
-<p><img src="/Notes/2019/01/21/linux-guide/树形结构.jpg" alt="div align=center"></p>
+<p><img src="/Notes/2019/01/23/linux-guide/树形结构.jpg" alt="div align=center"></p>
 <p>目录中不同的路径可以存储在不同的分区，这在 Linux 中叫做挂载，必须将文件所在的分区挂载到一个已存在的目录上，才能通过访问这个目录来访问存储设备。例如，根目录放在磁盘分区1，etc、lib 存储在磁盘分区2，就说分区1是挂载到根目录的，分区2是挂载到etc、lib的。</p>
 <p>打开 shell 程序之后，我们看到如图所示：</p>
-<p><img src="/Notes/2019/01/21/linux-guide/pwd.png" alt="div align=center"></p>
+<p><img src="/Notes/2019/01/23/linux-guide/pwd.png" alt="div align=center"></p>
 <p>reeves 是当前用户名，rebuntu 是计算机名称，”~”表示当前所处的位置，命令 pwd 可以让我们查看当前所处位置的绝对路径：/home/reeves，第一个”/“不是分隔符，而是根目录，第二个”/“是一个分隔符，/home/reeves == ~，”~”有时候也被称为用户的主目录。</p>
 <p>命令”ls”，可以让我们查看当前路径下都有什么：</p>
-<p><img src="/Notes/2019/01/21/linux-guide/ls-home.png" alt="div align=center"></p>
+<p><img src="/Notes/2019/01/23/linux-guide/ls-home.png" alt="div align=center"></p>
 <p><strong>ls</strong> 是 list 的缩写，列出当前路径下的文件，是 Linux 中最常用的一个命令。打开文件管理器可以看到显示的就是 Home 路径。</p>
 <p>ls 命令后面可以加参数与选项，常用的有：</p>
 <ul>
@@ -556,31 +556,31 @@
 <p>安装谷歌拼音输入法。执行这个命令，系统会自动安装 fcitx，googlepinyin，以及一些 fcitx 配置程序：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">sudo apt install fcitx-googlepinyin</span></span><br></pre></td></tr></table></figure>
 <p>打开 systemsettings -&gt; Language Support，系统会自动进行语言包搜索，按照系统提示确认安装。fcitx 是一个输入法框架。如图所示，在 Keyboard input method system 中选择 fcitx：</p>
-<p><img src="/Notes/2019/01/21/linux-guide/fcitx.jpg" alt="div align=center"></p>
+<p><img src="/Notes/2019/01/23/linux-guide/fcitx.jpg" alt="div align=center"></p>
 <p>重启电脑，fcitx 输入法框架开始运行。在终端执行 fcitx-configtool，进行输入法配置。点击 “+” 添加Google Pinyin：</p>
-<p><img src="/Notes/2019/01/21/linux-guide/fcitx-config1.jpg" alt="div align=center"></p>
+<p><img src="/Notes/2019/01/23/linux-guide/fcitx-config1.jpg" alt="div align=center"></p>
 <p>若列表里没有 Google Pinyin，需要取消 Only Show Current Language 复选框：</p>
-<p><img src="/Notes/2019/01/21/linux-guide/fcitx-config11.jpg" alt="div align=center"></p>
+<p><img src="/Notes/2019/01/23/linux-guide/fcitx-config11.jpg" alt="div align=center"></p>
 <p>添加完输入法之后，在 Global Config 中可以看到输入法的切换方式：</p>
-<p><img src="/Notes/2019/01/21/linux-guide/fcitx-config111.jpg" alt="div align=center"></p>
+<p><img src="/Notes/2019/01/23/linux-guide/fcitx-config111.jpg" alt="div align=center"></p>
 <p>以上。</p>
 <h2 id="Nvidia-驱动安装"><a href="#Nvidia-驱动安装" class="headerlink" title="Nvidia 驱动安装"></a>Nvidia 驱动安装</h2><p>在 All Settings -&gt;  Details 中查看自己的设备信息，如图：</p>
-<p><img src="/Notes/2019/01/21/linux-guide/setting-details.png" alt="div align=center"></p>
+<p><img src="/Notes/2019/01/23/linux-guide/setting-details.png" alt="div align=center"></p>
 <p>Nvidia 驱动和 CUDA 版本存在着对应关系，可以在<a href="https://docs.nvidia.com/cuda/cuda-toolkit-release-notes/index.html" target="_blank" rel="noopener">官网</a>查看。</p>
 <p><a href="https://www.geforce.com/drivers" target="_blank" rel="noopener">这里</a>可以查看 GPU 支持的驱动版本。</p>
 <p>推荐使用 ppa 源安装驱动，方法如下：</p>
 <p>首先添加 ppa 源，执行如下语句：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">sudo add-apt-repository ppa:graphics-drivers/ppa</span></span><br></pre></td></tr></table></figure>
 <p>获取最新的软件包源，将其添加至当前 apt 库中，执行后会显示当前可供下载的最新驱动版本号，已经老的驱动版本号。如图：</p>
-<p><img src="/Notes/2019/01/21/linux-guide/add-apt.png" alt="div align=center"></p>
+<p><img src="/Notes/2019/01/23/linux-guide/add-apt.png" alt="div align=center"></p>
 <p>最新的版本为 nvidia-410(410.66)，稍早的版本为 nvidia-390(390.87)。更新软件库信息，并下载 Nvidia 驱动：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">sudo apt update</span></span><br><span class="line"><span class="meta">$</span><span class="bash">sudo apt install nvidia-390</span></span><br></pre></td></tr></table></figure>
 <p>安装三维图像库和 OpenGL 环境，并重启：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">sudo apt install mesa-common-dev</span></span><br><span class="line"><span class="meta">$</span><span class="bash">sudo apt install freeglut3-dev</span></span><br><span class="line"><span class="meta">$</span><span class="bash">sudo reboot</span></span><br></pre></td></tr></table></figure>
 <p>在终端输入 nvidia-smi，若输出如下，则说明安装成功：</p>
-<p><img src="/Notes/2019/01/21/linux-guide/nvidia-smi.png" alt="div align=center"></p>
+<p><img src="/Notes/2019/01/23/linux-guide/nvidia-smi.png" alt="div align=center"></p>
 <p>All Setting -&gt; Details 内显示 Graphics 为 Geforce 920：</p>
-<p><img src="/Notes/2019/01/21/linux-guide/nvidia-details.png" alt="div align=center"></p>
+<p><img src="/Notes/2019/01/23/linux-guide/nvidia-details.png" alt="div align=center"></p>
 <p>在 .bashrc 中添加路径：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"><span class="built_in">export</span> LD_LIBRARY_PATH=<span class="variable">$LD_LIBRARY_PATH</span>:/usr/lib/nvidia-390</span></span><br></pre></td></tr></table></figure></p>
 <p>以上。</p>
 <h2 id="CUDA-安装"><a href="#CUDA-安装" class="headerlink" title="CUDA 安装"></a>CUDA 安装</h2><p>以 cuda8 为例，参考<a href="https://blog.csdn.net/u010837794/article/details/63251725" target="_blank" rel="noopener">博客</a>。</p>
@@ -753,8 +753,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/Notes/2019/01/20/test/" rel="next" title="test">
-                <i class="fa fa-chevron-left"></i> test
+              <a href="/Notes/2019/01/22/Effective-C-读书笔记/" rel="next" title="Effective C++ 读书笔记 03：尽可能使用const">
+                <i class="fa fa-chevron-left"></i> Effective C++ 读书笔记 03：尽可能使用const
               </a>
             
           </div>
@@ -762,6 +762,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/Notes/2019/02/27/朴素贝叶斯-naive-bayes/" rel="prev" title="朴素贝叶斯 naive bayes">
+                朴素贝叶斯 naive bayes <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -840,7 +844,7 @@
               
                 <a href="/Notes/archives/">
               
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -851,7 +855,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/Notes/categories/index.html">
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -862,7 +866,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/Notes/tags/index.html">
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -913,7 +917,7 @@
                   </li>
                 
                   <li class="links-of-blogroll-item">
-                    <a href="https://lightzhan.github.io/" title="行走的生命" target="_blank">行走的生命</a>
+                    <a href="https://lightzhan.github.io/" title="Light" target="_blank">Light</a>
                   </li>
                 
                   <li class="links-of-blogroll-item">
