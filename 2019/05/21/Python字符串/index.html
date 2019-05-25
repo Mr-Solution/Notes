@@ -75,17 +75,17 @@
 
 
 
-<meta name="description" content="本博客使用 Hexo+NexT 构建，所有的文档资源均开源于 Github 上，如果你喜欢这些文章，请在 GitHub 上关注我。">
+<meta name="description" content="an introduction">
 <meta property="og:type" content="website">
-<meta property="og:title" content="about">
-<meta property="og:url" content="https://mr-solution.github.io/Notes/about/index.html">
+<meta property="og:title" content="categories">
+<meta property="og:url" content="https://mr-solution.github.io/Notes/categories/index.html">
 <meta property="og:site_name" content="Forty-two">
-<meta property="og:description" content="本博客使用 Hexo+NexT 构建，所有的文档资源均开源于 Github 上，如果你喜欢这些文章，请在 GitHub 上关注我。">
+<meta property="og:description" content="an introduction">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-01-23T04:05:21.964Z">
+<meta property="og:updated_time" content="2019-01-21T06:43:44.497Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="about">
-<meta name="twitter:description" content="本博客使用 Hexo+NexT 构建，所有的文档资源均开源于 Github 上，如果你喜欢这些文章，请在 GitHub 上关注我。">
+<meta name="twitter:title" content="categories">
+<meta name="twitter:description" content="an introduction">
 
 
 
@@ -117,7 +117,7 @@
 
 
 
-  <link rel="canonical" href="https://mr-solution.github.io/Notes/about/">
+  <link rel="canonical" href="https://mr-solution.github.io/Notes/categories/">
 
 
 
@@ -390,7 +390,7 @@
 
       
         <p>字符串的访问跟列表一样，用方括号访问，支持切片操作。<br>python 支持格式化字符串的输出，最基本的用法是字符串中插入 <code>%s</code>：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">print(<span class="string">"My name is %s."</span> % (<span class="string">"LiLei"</span>))</span><br><span class="line">str = <span class="string">"Her name is %s"</span> % (<span class="string">"HanMeimei"</span>)</span><br></pre></td></tr></table></figure></p>
-<p>具体的字符串格式符同 C 语言一样。<br>从 Python2.6 开始，新增了一种格式化字符串的函数 <code>python str.format()</code>，它增强了字符串格式化的功能。其基本语法是通过 <code>{}</code> 和 <code>:</code> 来代替以前的 <code>%</code>。<code>format</code> 函数可以接受不限个参数，位置可以不按顺序。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;<span class="string">"&#123;&#125; &#123;&#125;"</span>.format(<span class="string">"hello"</span>, <span class="string">"world"</span>)  <span class="comment"># 不设置指定位置，按默认顺序</span></span><br><span class="line"><span class="string">'hello world'</span></span><br><span class="line">&gt;&gt;&gt;<span class="string">"&#123;0&#125; &#123;1&#125;"</span>.format(<span class="string">"hello"</span>, <span class="string">"world"</span>)  <span class="comment"># 设置指定位置</span></span><br><span class="line">&gt;&gt;&gt;<span class="string">"&#123;0&#125; &#123;1&#125; &#123;0&#125;"</span>.format(<span class="string">"hello"</span>, <span class="string">"world"</span>)</span><br><span class="line">hello world hello</span><br></pre></td></tr></table></figure></p>
+<p>具体的字符串格式符同 C 语言一样。<br>从 Python2.6 开始，新增了一种格式化字符串的函数 <code>str.format()</code>，它增强了字符串格式化的功能。其基本语法是通过 <code>{}</code> 和 <code>:</code> 来代替以前的 <code>%</code>。<code>format()</code> 函数可以接受不限个参数，位置可以不按顺序。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;<span class="string">"&#123;&#125; &#123;&#125;"</span>.format(<span class="string">"hello"</span>, <span class="string">"world"</span>)  <span class="comment"># 不设置指定位置，按默认顺序</span></span><br><span class="line"><span class="string">'hello world'</span></span><br><span class="line">&gt;&gt;&gt;<span class="string">"&#123;0&#125; &#123;1&#125;"</span>.format(<span class="string">"hello"</span>, <span class="string">"world"</span>)  <span class="comment"># 设置指定位置</span></span><br><span class="line">&gt;&gt;&gt;<span class="string">"&#123;0&#125; &#123;1&#125; &#123;0&#125;"</span>.format(<span class="string">"hello"</span>, <span class="string">"world"</span>)</span><br><span class="line">hello world hello</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -431,8 +431,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/Notes/2019/05/21/Python-随机数-seed/" rel="prev" title="Python 随机数 seed">
-                Python 随机数 seed <i class="fa fa-chevron-right"></i>
+              <a href="/Notes/2019/05/21/Python-随机数/" rel="prev" title="Python 随机数">
+                Python 随机数 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
