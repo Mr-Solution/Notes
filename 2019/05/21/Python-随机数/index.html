@@ -75,17 +75,17 @@
 
 
 
-<meta name="description" content="an introduction">
+<meta name="description" content="&amp;lt;!DOCTYPE HTML&amp;gt;">
 <meta property="og:type" content="website">
-<meta property="og:title" content="categories">
-<meta property="og:url" content="https://mr-solution.github.io/Notes/categories/index.html">
+<meta property="og:title" content="404">
+<meta property="og:url" content="https://mr-solution.github.io/Notes/404/index.html">
 <meta property="og:site_name" content="Forty-two">
-<meta property="og:description" content="an introduction">
+<meta property="og:description" content="&amp;lt;!DOCTYPE HTML&amp;gt;">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-01-21T06:43:44.497Z">
+<meta property="og:updated_time" content="2019-01-21T08:42:24.427Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="categories">
-<meta name="twitter:description" content="an introduction">
+<meta name="twitter:title" content="404">
+<meta name="twitter:description" content="&amp;lt;!DOCTYPE HTML&amp;gt;">
 
 
 
@@ -117,7 +117,7 @@
 
 
 
-  <link rel="canonical" href="https://mr-solution.github.io/Notes/categories/">
+  <link rel="canonical" href="https://mr-solution.github.io/Notes/404/">
 
 
 
@@ -389,7 +389,8 @@
       
 
       
-        <p>有这样一个场景：在蛇棋游戏中，总共有 100 个格子，其中有 ladder_num 个格子中有梯子，梯子的作用是让棋子直通到另外一个格子中。用 python 实现梯子功能的代码片段如下：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ladders = dict(np.random.randint(<span class="number">1</span>, <span class="number">100</span>, size=(ladder_num, <span class="number">2</span>)))</span><br><span class="line"><span class="keyword">for</span> k,v <span class="keyword">in</span> ladders.items():</span><br><span class="line">    ladders[v] = k</span><br></pre></td></tr></table></figure></p>
+        <p>有这样一个场景：在蛇棋游戏中，总共有 100 个格子，其中有 ladder_num 个格子中有梯子，梯子的作用是让棋子直通到另外一个格子中。用 python 实现梯子功能的代码片段如下：<br><a id="more"></a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ladders = dict(np.random.randint(<span class="number">1</span>, <span class="number">100</span>, size=(ladder_num, <span class="number">2</span>)))</span><br><span class="line"><span class="keyword">for</span> k,v <span class="keyword">in</span> ladders.items():</span><br><span class="line">    ladders[v] = k</span><br></pre></td></tr></table></figure>
 <p><code>np.random.randint(1,100,size=(ladder_num, 2))</code> 意思是随机生成一个 ladder_num x 2 的二维数组，数组中每一个元素的大小在 1 到 100 之间。然后将二维数组转换为 dict，其中 key 代表起始的格子编号，value 代表指向的格子编号，梯子由 key 指向 value。再用一个循环将梯子由 value 指向 key，说明梯子是双向的。<br>这里有两个问题。第一，随机数是不可控的，在 ladder_num 个数据对中很有可能会出现相同的数字，<code>dict()</code> 函数是有去重功能的，假设存在数据对 <code>[[2,8],[2,15]]</code>，那么最终保留在 dict 中的 key 值 2，对应的 value 只有 15。这就造成了数据丢失，若我们的目的是为了生成 10 个梯子，这样最终只能生成 9 个梯子。第二，假设随机生成的数据对为<code>[...,[45,48],[65,68],[68,10],...]</code>，那么后面的循环就会出现问题，因为<code>dict</code>中 key 65 对应的 value 为 68，循环中反转 kv，得到一个 key 68 指向 value 65，但是<code>dict</code>中已经有值为 68 的 key 了，它指向 value 10，这里就对原来的梯子做了修改。更严重的是，这里会报错<code>RuntimeError: dictionary changed size during iteration</code>，这是因为 Python 3 是不允许在遍历中修改字典大小的。  </p>
 <p>可以将代码修改如下：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ladders = np.random.randint(<span class="number">1</span>, <span class="number">100</span>, size=(ladder_num, <span class="number">2</span>))</span><br><span class="line"><span class="keyword">for</span> k,v <span class="keyword">in</span> ladders:</span><br><span class="line">    ladders = np.vstack((ladders, np.array([v,k])))</span><br><span class="line">ladders = dict(ladders)</span><br></pre></td></tr></table></figure></p>
 <p>但是这样依然无法解决第一个问题，ladders 这个字典的大小依然可能小于我们希望的 ladder_num。为了得到不重复的 N 个随机数，我们有两个方法：第一，使用<code>random.sample(range(A,B),N)</code>函数，表示从[A,B]区间随机生成 N 个数，结果以列表返回。第二，使用 numpy 的函数<code>np.random.sample(size)</code>，该函数返回一个 size 数组，元素在[0.0, 1.0)区间：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ladders = np.random.sample((ladder_num, <span class="number">2</span>)) * (<span class="number">100</span> - <span class="number">0</span>)</span><br><span class="line">ladders = ladders.astype(int)</span><br><span class="line"><span class="keyword">for</span> k,v <span class="keyword">in</span> ladders:</span><br><span class="line">    ladders = np.vstack((ladders, np.array([v,k])))</span><br><span class="line">ladders = dict(ladders)</span><br></pre></td></tr></table></figure></p>
@@ -435,6 +436,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/Notes/2019/06/10/linux-强化学习环境配置/" rel="prev" title="linux强化学习环境配置">
+                linux强化学习环境配置 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -513,7 +518,7 @@
               
                 <a href="/Notes/archives/">
               
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -535,7 +540,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/Notes/tags/index.html">
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
