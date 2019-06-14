@@ -1,0 +1,1189 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/Notes/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/Notes/css/main.css?v=6.0.0" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/Notes/images/apple-touch-icon-next.png?v=6.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/Notes/images/favicon-32x32-next.png?v=6.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/Notes/images/favicon-16x16-next.png?v=6.0.0">
+
+
+  <link rel="mask-icon" href="/Notes/images/logo.svg?v=6.0.0" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="&amp;lt;!DOCTYPE HTML&amp;gt;">
+<meta property="og:type" content="website">
+<meta property="og:title" content="404">
+<meta property="og:url" content="https://mr-solution.github.io/Notes/404/index.html">
+<meta property="og:site_name" content="Forty-two">
+<meta property="og:description" content="&amp;lt;!DOCTYPE HTML&amp;gt;">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-01-21T08:42:24.427Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="404">
+<meta name="twitter:description" content="&amp;lt;!DOCTYPE HTML&amp;gt;">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/Notes/',
+    scheme: 'Pisces',
+    version: '6.0.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://mr-solution.github.io/Notes/404/">
+
+
+
+
+
+  <title>python 模块、包及 import 方法 | Forty-two</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/Notes/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Forty-two</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">The Hacker's Guide to the Algorithm</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/Notes/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/Notes/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/Notes/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/Notes/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/Notes/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/Notes/404/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://mr-solution.github.io/Notes/Notes/2019/06/11/python-包-模块-及import方法/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Mr-Solution">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/Notes/images/touxiang.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Forty-two">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">python 模块、包及 import 方法</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-11T09:54:09+08:00">2019-06-11</time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/Notes/categories/Python-Notes/" itemprop="url" rel="index">
+                    <span itemprop="name">Python Notes</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="模块和包"><a href="#模块和包" class="headerlink" title="模块和包"></a>模块和包</h2><p>在 Python 中，一个 .py 文件就是一个模块（module）。使用模块大大提高了代码的可维护性，一个模块编写完成，就可以被其他项目代码引用。使用模块还可以避免函数名和变量名的冲突，相同名字的函数和变量可以分别存在于不同的模块中。我们在编写自己的模块时，不必考虑名字与其他模块内名字冲突。<br><a id="more"></a><br>在创建许许多多模块后，我们可能希望将某些功能相近的文件组织在同一文件夹下，这里就需要运用包的概念了。简单的说，包就是一个文件夹，但该文件夹下必须有 __init__.py 文件（若无，则 Python 将其视为一个普通目录）。常见的包结构如下：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">my_package/</span><br><span class="line">   __init__.py</span><br><span class="line">   a.py</span><br><span class="line">   b.py</span><br></pre></td></tr></table></figure>
+<p>包可以有多级目录，组成多层次的包结构：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">my_package/  </span><br><span class="line">    __init__.py</span><br><span class="line">    web/</span><br><span class="line">        __init__.py</span><br><span class="line">        www.py</span><br><span class="line">        utils.py</span><br><span class="line">    a.py</span><br><span class="line">    utils.py</span><br></pre></td></tr></table></figure>
+<p>文件 <code>www.py</code> 的模块名就是 my_package.web.www，两个<code>utils.py</code> 的模块名分别是 my_package.utils 和 my_package.web.utils。</p>
+<p>第一次导入包或者包的任何其他部分，会执行包中的 <code>__init__.py</code> 文件，这个文件可以为空，也可以存放一些初始化的代码。</p>
+<p><code>__init__.py</code> 可以为空，也可以执行包的初始化或者设置 <code>__all__</code> 变量的值。</p>
+<h2 id="导入模块"><a href="#导入模块" class="headerlink" title="导入模块"></a>导入模块</h2><p>模块是最高级别的程序组织单元，它将程序代码和数据封装起来以便重用。模块可以由两个语句和一个重要的内置函数进行处理。  </p>
+<ul>
+<li>import: 使导入者以一个整体获取一个模块</li>
+<li>from: 允许导入者从一个模块文件中获取特定的变量名</li>
+<li>imp.reload: 在不中止 Python 程序的情况下，提供了一种重新载入模块文件代码的方法。</li>
+</ul>
+<p><code>import</code> 后面应该跟模块名，用法为<code>import module</code>或<code>from package import module</code>。在导入自建包的时候，如果直接写<code>import my_package</code>，<code>my_package.my_module.my_func()</code>，会报错<code>module &#39;my_package&#39; has no attribute &#39;my_module&#39;</code>，即 Python 将导入自建包的语句当作是导入一个模块。有一些操作可以让我们实现<code>import my_package</code>这种写法，在下面会做讨论。</p>
+<p>首先，我们要先了解一下，当我们在 Python 代码中执行 import 的时候，Python 解释器做了什么。</p>
+<p>有些 C 程序设计者喜欢把 Python 的模块导入操作比作 C 语言中的 <code>#include</code>，但其实不应该这么比较：在 Python 中，导入并非只是把一个文件文本插入另一个文件而已。导入其实是运行时的运算，程序第一次导入指定文件时，会执行三个步骤。</p>
+<ul>
+<li>找到模块文件。</li>
+<li>编译成位码。</li>
+<li>执行模块的代码来创建其所定义的对象。</li>
+</ul>
+<p>这三个步骤旨在程序执行时，模块第一次导入时才会进行。在这之后，导入相同模块时，会跳过这三个步骤，而只提取内存中已加载的模块对象。更底层一些的说，Python 把载入的模块存储到一个名为 sys.modules 的表中，并在一次导入操作的开始检查该表，如果模块不存在，将会启动一个三步骤的过程：</p>
+<ol>
+<li>搜索<br>Python 使用标准模块搜索路径来找出 import 语句所对应的模块文件。在标准的 import 中引入路径从语法上讲是非法的[<a href="#zhushi">注</a>]。模块搜索路径包括<strong>程序主目录，PYTHONPATH 目录，标准链接库目录以及任何 .pth 文件的内容（按顺序依次搜索）</strong>。这四者组合起来就是 sys.path。我们在有的地方看到会 import os，然后再 path 中添加模块所在的路径，就是在操作 sys.path。<br><a name="zhushi"><br>注：<br>可以使用<code>from dir1.dir2 import module</code>或<code>import dir1.dir2.module</code>，这样加了路径的导入方式，但是前提是，dir1 位于上述四个搜索路径之中。<br></a></li>
+<li>编译（可选）<br>找到源文件后，Python 会将其编译成字节码，若在搜索路径上只发现了字节码文件，而没有源代码，则会直接加载字节码（这意味着可以把一个程序模块作为字节码发布，使程序提速）。被导入的文件会产生一个 .pyc 字节码文件，被导入文件的字节码保存在文件中从而可以提高之后导入的速度。</li>
+<li>执行<br> 模块文件中的所有语句会依次执行，任何对变量名的赋值运算，都会产生所得到的模块文件的属性。</li>
+</ol>
+<h3 id="import-和-from"><a href="#import-和-from" class="headerlink" title="import 和 from"></a>import 和 from</h3><p>客户端可以执行 import 或 from 语句来使用模块文件，如果模块还没被加载，这两个语句就回去搜索、编译以及执行模块文件。主要的差别在于，import 会读取整个模块，from 将获取（或者说复制）模块中特定的变量名。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> module1</span><br><span class="line">module1.printer(<span class="string">'hello world!'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> module1 <span class="keyword">import</span> printer</span><br><span class="line">printer(<span class="string">'hello world!'</span>)</span><br></pre></td></tr></table></figure>
+<p>这段代码展示了两种导入方式。import 语句使用一个变量名引用整个模块对象，所以必须通过模块名称（module1）来使用模块的属性（printer）。from 把模块中的变量名 printer 复制到另一个作用域，它让我们可以直接在脚本中使用复制后的变量名。<strong>from语句有破坏命名空间的潜质。如果使用from导入变量，而那些变量碰巧和作用域中现有变量重名，变量就会被悄悄的覆盖掉。使用 import 语句时就不存在这种问题，因为必须通过模块名才能获取其内容。不过，使用from时，只要你了解并预料到可能发生这种事，在实际情况下这就不是一个大问题了，尤其是当你明确列出导入变量名时（例如，from module import x, y, z）。</strong></p>
+<p><strong>import 和 from 是赋值语句！</strong><br><strong>import 和 from 是赋值语句！</strong><br><strong>import 和 from 是赋值语句！</strong>  </p>
+<p>就像 def 一样，import 和 from 是可执行的语句，而不是编译期间的声明，import 和 from 都是隐性的赋值语句。import 将整个模块对象赋值给一个变量名，例如 <code>import numpy as np</code>，变量 np 可以调用 numpy 里的对象。from 将一个或多个变量名赋值给另一个模块中的同名对象，例如<code>from random import random</code>，在当前模块中使用 random 变量就可以调用 random 模块的对象。</p>
+<p>又因为 from 是复制引用模块内的变量，变成当前脚本中的对象的引用，所以通过 from 赋值的对象是不安全的：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"""var.py"""</span></span><br><span class="line">x = <span class="number">1</span></span><br><span class="line">y = [<span class="number">1</span>,<span class="number">2</span>]</span><br><span class="line"></span><br><span class="line"><span class="string">"""test1.py"""</span></span><br><span class="line"><span class="keyword">from</span> var <span class="keyword">import</span> x,y</span><br><span class="line">...</span><br><span class="line">x = <span class="number">2</span></span><br><span class="line">y[<span class="number">0</span>] = <span class="number">9</span></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="string">"""test2.py"""</span></span><br><span class="line"><span class="keyword">import</span> var</span><br><span class="line">print(x)  <span class="comment"># 1</span></span><br><span class="line">print(y)  <span class="comment"># [9,2]</span></span><br></pre></td></tr></table></figure>
+<p>列表 y 是一个可变对象，在 test1 中，改变了 y 的值，在 test2 中得到了反馈，test2 中的 y 被修改。</p>
+<p>所以，通常会建议大家使用 import 而非 from 来导入模块（而不是导入包）。from 破坏了命名空间，造成了变量名的重复甚至覆盖，或者如上例所示，同名的变量无意间修改了 var 模块中的变量。这都是不安全的隐患。而 import 通过 module.x，module.y 这样的访问方式，大大提升了代码的安全性。</p>
+<h2 id="导入包"><a href="#导入包" class="headerlink" title="导入包"></a>导入包</h2><h3 id="init-py"><a href="#init-py" class="headerlink" title="__init__.py"></a>__init__.py</h3><p>要导入一个包，必须遵循一条约束：包的每一级目录都有 __init__.py 文件。</p>
+<p>Python 首次导入某个包时，会自动执行该目录下 __init__.py 文件中的所有程序代码。因此，__init__.py 文件自然就应该是一份初始化代码。</p>
+<p>举一个例子，我们看一下 Python Web 框架 django 中是怎么写 __init__.py 文件的：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"""django/django/apps/__init__.py"""</span></span><br><span class="line"><span class="keyword">from</span> .config <span class="keyword">import</span> AppConfig</span><br><span class="line"><span class="keyword">from</span> .registry <span class="keyword">import</span> apps</span><br><span class="line"></span><br><span class="line">__all__ = [<span class="string">'AppConfig'</span>, <span class="string">'apps'</span>]</span><br></pre></td></tr></table></figure>
+<p>包 apps 内有三个文件 <code>\_\_init\_\_.py</code>，<code>config.py</code>，<code>registry.py</code>。如果我们什么也不做，直接 import apps，是可以成功导入的，但是在使用的时候，<code>apps.config.AppConfig</code> 会报错，<code>module &#39;apps&#39; has no attribute &#39;config&#39;</code>，Python 在这里直接导入了一个模块，而未能按照包来处理。但是在 __init__.py 中加入那两行代码之后，<code>import apps</code>相当于执行了这两个 from 导入。另外一种写法就是，__init__.py 中不写 from 语句，在需要导入包的地方使用<code>from apps import config</code>，这样也可以实现模块的导入，同时也没有破坏命名空间。</p>
+<p>再来看看 __all__ 变量。该变量定义了以 <code>from ... import *</code> 语句形式导入包时，需要导出什么。若定义了这个变量，那么使用<code>from ... import *</code>导入包时，并不会导入包内所有的模块的所有变量，而是只导出列表中的变量。</p>
+<h3 id="关于-import-的一些语法"><a href="#关于-import-的一些语法" class="headerlink" title="关于 import 的一些语法"></a>关于 import 的一些语法</h3><ul>
+<li><p>在同级目录导入模块时，不能使用 <code>from . import module</code>，应该直接写<code>import module</code></p>
+</li>
+<li><p>在同级目录下，可以写<code>from .module import attribute</code></p>
+</li>
+</ul>
+<h2 id="Python-模块文件模板"><a href="#Python-模块文件模板" class="headerlink" title="Python 模块文件模板"></a>Python 模块文件模板</h2><p>这只是一个建议，摘自<a href="https://www.liaoxuefeng.com/wiki/1016959663602400/1017455068170048" target="_blank" rel="noopener">廖雪峰Python教程</a>。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python3</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="string">'a test module '</span>  <span class="comment"># 任何模块代码的第一个字符串都被视为模块的文档注释</span></span><br><span class="line"></span><br><span class="line">__author__ = <span class="string">'LiBo'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test</span><span class="params">()</span>:</span></span><br><span class="line">    args = sys.argv</span><br><span class="line">    <span class="keyword">if</span> len(args)==<span class="number">1</span>:</span><br><span class="line">        print(<span class="string">'Hello, world!'</span>)</span><br><span class="line">    <span class="keyword">elif</span> len(args)==<span class="number">2</span>:</span><br><span class="line">        print(<span class="string">'Hello, %s!'</span> % args[<span class="number">1</span>])</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        print(<span class="string">'Too many arguments!'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__==<span class="string">'__main__'</span>:</span><br><span class="line">    test()</span><br></pre></td></tr></table></figure>
+<p>以上。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/Notes/tags/Python/" rel="tag"># Python</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/Notes/2019/06/10/linux-中文输入法/" rel="next" title="linux中文输入法">
+                <i class="fa fa-chevron-left"></i> linux中文输入法
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/Notes/2019/06/11/On-Policy-Off-Policy/" rel="prev" title="On-Policy & Off-Policy">
+                On-Policy & Off-Policy <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/Notes/images/touxiang.jpg" alt="Mr-Solution">
+            
+              <p class="site-author-name" itemprop="name">Mr-Solution</p>
+              <p class="site-description motion-element" itemprop="description">an introduction</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/Notes/archives/">
+              
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/Notes/categories/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/Notes/tags/index.html">
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/Mr-Solution" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:strider92@foxmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://blog.csdn.net/bryan_shtm" target="_blank" title="CSDN">
+                      
+                        <i class="fa fa-fw fa-link"></i>CSDN</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://imshenzhuo.github.io/" title="shenzhuo" target="_blank">shenzhuo</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://lightzhan.github.io/" title="Light" target="_blank">Light</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://kchu.github.io/" title="飞语流年" target="_blank">飞语流年</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#模块和包"><span class="nav-number">1.</span> <span class="nav-text">模块和包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#导入模块"><span class="nav-number">2.</span> <span class="nav-text">导入模块</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#import-和-from"><span class="nav-number">2.1.</span> <span class="nav-text">import 和 from</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#导入包"><span class="nav-number">3.</span> <span class="nav-text">导入包</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#init-py"><span class="nav-number">3.1.</span> <span class="nav-text">__init__.py</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关于-import-的一些语法"><span class="nav-number">3.2.</span> <span class="nav-text">关于 import 的一些语法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Python-模块文件模板"><span class="nav-number">4.</span> <span class="nav-text">Python 模块文件模板</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mr-Solution</span>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/Notes/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/Notes/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/Notes/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/Notes/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/Notes/lib/three/three-waves.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/Notes/js/src/utils.js?v=6.0.0"></script>
+
+  <script type="text/javascript" src="/Notes/js/src/motion.js?v=6.0.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/Notes/js/src/affix.js?v=6.0.0"></script>
+
+  <script type="text/javascript" src="/Notes/js/src/schemes/pisces.js?v=6.0.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/Notes/js/src/scrollspy.js?v=6.0.0"></script>
+<script type="text/javascript" src="/Notes/js/src/post-details.js?v=6.0.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/Notes/js/src/bootstrap.js?v=6.0.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/Notes/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
