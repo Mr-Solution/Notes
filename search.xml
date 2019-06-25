@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[剑指 offer 读书笔记：编程语言篇]]></title>
+    <url>%2FNotes%2F2019%2F06%2F22%2F%E5%89%91%E6%8C%87-offer-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%2F</url>
+    <content type="text"><![CDATA[C/C++1. 基础知识 1.1 C 字符串和 C++ 字符串 C 语言是没有字符串的，C 风格字符串是以一维字符数组的形式存储，并以字符’\0’终止。 C++ 中引入了 string 类，字符串在 C ++ 中用一个 string 实例表示。 1.2 sizeof数组12345678#include &lt;stdio.h&gt;int main() &#123; char *p = "abcdef"; char a[] = "abcdef"; printf("sizeof(p) = %lu\n", sizeof(p)); printf("sizeof(a) = %lu\n", sizeof(a)); return 0;&#125; 输出sizeof(p) = 8，sizeof(a) = 7。sizof(p)输出的是指针 p 的大小，指针的大小同系统的寻址能力有关，在64位系统中，一个指针为64位，等于8字节，所以 sizeof(p)=8。a 是一个数组名，编译器用数组名来记录数组的属性，比如数组的大小等。数组名只有在表达式中使用时，编译器才会为它产生一个指针常量，但是有两个例外——sizeof 操作符和单目操作符 &amp;。sizeof返回整个数组的长度，而不是指向数组的指针的长度。取一个数组名的地址产生的是一个指向数组的指针，而不是指向某个指针常量值的指针。一定要记住：数组名并不等价于指针。 · 问：sizeof 是如何知道数组大小的？· 答：sizeof(arr)不是程序执行到这里的时候才去求值的，并且sizeof(arr)计算的是数组所占字节数，并非数组长度，数组长度 = sizeof(arr)/sizeof(类型)。例如，定义一个数组 arr，int arr[10]，那么sizeof(arr)的结果为 40，而sizeof(arr)/sizeof(int)的结果为 10。sizeof关键字是在编译阶段处理的，在程序运行之前，sizeof(arr)的结果就已经被计算好并保存在.out文件中。 结构体结构体的地址对齐有两条原则： 结构体中成员的偏移量必须是成员大小的整数倍； 结构体大小必须是所有成员大小的整数倍，即所有成员大小的公倍数。 1234567891011typedef struct &#123; char c; int i;&#125; S1;typedef struct &#123; char c1; S1 s1;&#125; S2;...printf("sizeof(S1) = %lu\n", sizeof(S1));printf("sizeof(S2) = %lu\n", sizeof(S2)); 运行结果为：sizeof(S1) = 8，sizeof(S2) = 12。char 占 1 个字节，int 占 4 个字节，在对齐的时候，c 的偏移量为 0，i 的偏移量为 4，S1 的大小为 8。对于嵌套的结构体 S2，需要将其展开。两条原则变为： 展开后的结构体的第一个成员的偏移量应当是被展开的结构体中最大的成员的整数倍。 结构体大小必须是所有成员(展开后的成员)大小的整数倍。 这里 S1 中最大的类型为 int，占4字节，所以，s1.c 的偏移量为4，s1.i 的偏移量为8，S2 的大小为12。 1.3 strlen表面上看，strlen和sizeof都可以求字符串的长度，但二者却存在着本质的区别。 sizeof是一个运算符，strlen是一个函数。 sizeof返回操作对象所占的内存字节数；strlen返回字符串的长度(字符的个数，并不等于内存字节数)，不包括结束字符(‘\0’ )。 sizeof的结果在编译阶段生成；strlen的结果在运行阶段产生。 123char str[] = "abc";printf("sizeof(str) = %lu\n", sizeof(str));printf("strlen(str) = %lu\n", strlen(str)); 输出分别为4和3。 1.4 C++中字符数组和指针的区别参考博客。 第一个例子：123char str1[] = "abc";char str2[] = "abc";printf("%d\n", str1 == str2); 这段代码最终会输出结果 0。因为，”abc”是一个常量，保存在常量存储区，str1 是一个数组变量，保存在栈区，语句char str1[] = &quot;abc&quot;的意思是，在栈区申请大小为 4 的空间，保存”abc”(字符数组结尾默认添加’\0’)。同理，char str2[] = &quot;abc&quot;也申请了一块栈区的内存。即 str1 和 str2 存放在不同的位置，在表达式str1 == str2中，str1 和 str2 都是指针，分布指向两个数组的起始地址，故 str1 == str2 会返回 false。在使用 clang 编译代码的时候，编译器会提示： warning: array comparison always evaluates to false 就是告诉用户，数组内容虽然一样，但是数组名作为指针，指向的是不同的内存区域。gcc 则缺少相应的提示。 第二个例子：1234567const char *str3 = "abc";const char *str4 = "abc";printf("%d\n", str3 == str4);const char str5[] = "abc";const char str6[] = "abc";printf("%d\n", str5 == str6); 第一个printf会输出1，第二个printf会输出0。这是因为，使用const定义的变量一般是不分配内存，而是保存在符号表中的，即指针 str3 和 str4 都是保存在符号表上，指向常量存储区中的常量”abc”，所以 str3 == str4。但是，对于 const 数组来说，因为系统不确定符号表是否有足够的空间来存放数组，所以还是会在栈区分配内存，所以 str3 指向的是栈区的”abc”，str3 不等于 str4。 1.5 const1.6 static2. 内存管理2.1 struct 对齐Q&amp;A SUMMARIZE Q：对一个空的类型求 sizeof，得到的结果是多少？A：1。空类型的实例中不包含任何信息，本来求 sizeof 是 0，但是当我们声明该类型的实例的时候，它必须在内存中占有一定的空间，否则无法使用这些实例。具体占用多少内存，由编译器决定。A：0。gcc 和 clang 的编译结果都是 0。 Q：如果在空类型中添加一个构造函数和析构函数，再求 sizeof，结果是多少？A：1。调用构造函数和析构函数只需要知道函数的地址即可，而这些函数的地址只与类型相关，而与类型的实例无关，编译器也不会因为这两个函数而在实例内添加任何额外的信息。 Q：如果把析构函数标记为虚函数呢？A：C++ 编译器发现类型中有虚函数，就会为该类型生成虚函数表，并在该类型的每一个实例中添加一个指向虚函数表的指针。在32位的机器上，一个指针占 4 字节，求 sizeof 结果为 4。]]></content>
+      <categories>
+        <category>编程语言</category>
+      </categories>
+      <tags>
+        <tag>读书笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[三门问题]]></title>
+    <url>%2FNotes%2F2019%2F06%2F19%2F%E4%B8%89%E9%97%A8%E9%97%AE%E9%A2%98%2F</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
     <title><![CDATA[Redis 学习笔记]]></title>
     <url>%2FNotes%2F2019%2F06%2F14%2FRedis-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%2F</url>
     <content type="text"><![CDATA[Redis 学习笔记，不定期更新。 书籍及源码书籍： 《Redis设计与实现》 代码： Redis 源码 《Redis设计与实现》Redis源码注释 如何阅读 Redis 源码]]></content>
@@ -8,8 +24,8 @@
         <category>数据库</category>
       </categories>
       <tags>
-        <tag>Redis</tag>
         <tag>数据库</tag>
+        <tag>Redis</tag>
       </tags>
   </entry>
   <entry>
@@ -111,14 +127,14 @@
   </entry>
   <entry>
     <title><![CDATA[Effective C++ 读书笔记 03：尽可能使用const]]></title>
-    <url>%2FNotes%2F2019%2F01%2F22%2FEffective-C-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%2F</url>
+    <url>%2FNotes%2F2019%2F01%2F22%2FEffective-C-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-03%2F</url>
     <content type="text"><![CDATA[const 允许你指定一个语义约束，而编译器会强制执行这项约束，确保某个对象不会被改变。如果某个对象在执行中不应该（或者不会）被改变，就应该使用const。 一. const 修饰变量看下面一段代码： 123456789101112#include&lt;iostream&gt;using namespace std;int main() &#123; int a = 1; //non-const data const int b = a; //const data int *c = &amp;a; //non-const data,non-const pointer const int *d = &amp;a; //const data,non-const pointer int * const e = &amp;a; //non-const data,const pointer const int * const f = &amp;a; //const data,const pointer const int * const g = &amp;a; //const data,const pointer return 0;&#125; const 修饰指针的时候，const 在 * 号右边表示指针是 const 的，在 * 左边，表示 *p（即指针指向的对象），是 const 的。在 STL 迭代器的应用中，map&lt;int, int&gt;::const_iterator itr 相当于 const T* itr，即迭代器（指针）itr 指向的对象 *itr 是 const 的，而 const map&lt;int, int&gt;::iterator itr 相当于 T* const itr，即迭代器 itr 是 const 的。 在上边代码中，若 a 的值被改变了，那么除 b 外，*c， *d， *e， *f， *g 都会改变，因为 b 的赋值是 copy 赋值立即数，之后的 b 就跟 a 没有关系了，但对 c-g 而言，修饰它们的 const 仅仅表示，不能修改指针的值或者通过 *p 修改指针指向的变量，但 a 并不是 const data，所以可以通过修改 a 的值来改变指针 cdefg 指向的值。 使用 const 需要注意，const 对象必须初始化（因为它不能改变不能接受再次的赋值）（但并不一定在声明的同时给予初值）。在函数中声明 const 需要立即给初值，在类 class 中声明的时候，不能立即赋值，这是因为 const 数据成员只在某个对象生存期内是常量，而对于整个类而言却是可变的（这点与 static 相反），类可以创建多个对象，相应的 const 成员的初始化只能在类的构造函数的初始化表中进行： 1234567class Stuff &#123;public: Stuff(int m) : max_num(m) &#123; &#125;;private: const int max_num;&#125;; 要想建立在整个类中都恒定的常量，应该用类中的枚举常量或者 static 来实现。 二. const 修饰成员函数const 成员函数的声明：const 关键字只能放在函数声明的尾部！ 123int func() const &#123; return 0;&#125; const 修饰的成员函数不能修改这个类对象的任何的数据成员（准确地说是非静态数据成员）。 const 成员函数不能调用非 const 成员函数，因为非 const 成员函数可以会修改成员变量。 在设计类的时候，一个原则就是对于不改变数据成员的成员函数都要声明为const 成员函数。有 const 修饰的成员函数（const 放在函数参数表的后面，而不是在函数前面或者参数表内），只能读取数据成员，不能改变数据成员；没有 const 修饰的成员函数，对数据成员则是可读可写的。 这样做好处在于，首先，类的接口更容易被理解，一看便知函数是读操作还是有写操作；其次，将成员函数声明为 const 使得该函数操作 const 对象成为可能，因为常量（即 const）对象可以调用 const 成员函数，而不能调用非 const 修饰的函数。 ps：之所以我们希望函数可以操作 const 对象是因为处于程序的效率考虑，传引用或者指针往往比传值要好，传引用的时候为了防止对象被修改，往往要声明为 const 引用或指针，const 对象不能调用非 const 函数，所以，尽可能的将只有读操作的函数声明为 const 函数。 注意：两个成员函数如果只是常量性不同，是可以被重载的，原因在于函数的形参列表里隐藏有 this 指针，const 函数里 this 指针是指向 const 对象的指针，而非 const 函数里的 this 指针是正常版本的指针。 1234567891011121314151617181920212223242526272829303132#include&lt;iostream&gt;using namespace std;class Chinese &#123;public: Chinese() &#123; personID = IdentityCardId; IdentityCardId++; &#125; int getNation() const&#123; cout &lt;&lt; "CHINA ID : " &lt;&lt; personID &lt;&lt; endl; IdentityCardId++; return 0; &#125; int getNation() &#123; cout &lt;&lt; "china ID : " &lt;&lt; personID &lt;&lt; endl; return 0; &#125;private: static int IdentityCardId; int personID;&#125;;int Chinese::IdentityCardId = 1;int main() &#123; const Chinese LaoWang = Chinese(); LaoWang.getNation(); //输出CHINA ID:1，const对象LaoWang默认调用const成员函数，并且可以修改static变量IdentityCardId Chinese LaoSun = Chinese(); LaoSun.getNation(); //输出china ID:3，non_const对象LaoSun默认调用non_const的成员函数 return 0;&#125; const 对象默认调用 const 成员函数，非 const 默认调用 const 成员函数，类中只有一个函数存在的情况下（我们删掉 non_const 版本的 getNation()），non_const 的对象也可以调用非 const 成员函数。 三. const 修饰函数返回值如果给以“指针传递”方式的函数返回值加 const 修饰，那么函数返回值（即指针）的内容不能被修改，该返回值只能被赋给加 const 修饰的同类型指针。例如函数: 1const char * GetString(void); 如下语句将出现编译错误： 1char *str = GetString(); 正确的用法是: 1const char *str = GetString(); 如果函数返回值采用“值传递方式”，由于函数会把返回值复制到外部临时的存储单元中，加 const 修饰没有任何意义。 例如不要把函数: 1int GetCnt(); 写成: 1const int GetCnt(); 同理不要把函数(T为自定义数据类型): 1T getT(void); 写成 1const T getT(void); 如果返回值不是内部数据类型，将函数 T getT(void) 改写为 const T &amp; getT(void) 的确能提高效率。但此时千万千万要小心，一定要搞清楚函数究竟是想返回一个对象的“拷贝”还是仅返回“别名”就可以了，否则程序会出错。 函数返回值采用“引用传递”的场合并不多，这种方式一般只出现在类的赋值函数中，目的是为了实现链式表达。（除了重载操作符外一般不要将返回值类型定为对某个对象的 const 引用！） 例如： 1234567class A &#123; A &amp; operate = (const A &amp;other); // 赋值函数&#125;;A a, b, c; // a, b, c 为A 的对象a = b = c; // 正常的链式赋值(a = b) = c; // 不正常的链式赋值，但合法 如果将赋值函数的返回值加 const 修饰，那么该返回值的内容不允许被改动。上例中，语句 a = b = c 仍然正确，但是语句 (a = b) = c 则是非法的。]]></content>
       <categories>
         <category>编程语言</category>
       </categories>
       <tags>
-        <tag>C++</tag>
         <tag>读书笔记</tag>
+        <tag>C++</tag>
       </tags>
   </entry>
   <entry>
