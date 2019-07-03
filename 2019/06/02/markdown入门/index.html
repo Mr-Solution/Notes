@@ -110,7 +110,7 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://mr-solution.github.io/Notes/2019/06/02/markdown入门/biaoti.PNG">
 <meta property="og:image" content="https://mr-solution.github.io/Notes/2019/06/02/markdown入门/doge.jpg">
-<meta property="og:updated_time" content="2019-07-03T09:06:30.931Z">
+<meta property="og:updated_time" content="2019-07-03T09:33:47.335Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="markdown入门">
 <meta name="twitter:description" content="本博客均使用 markdown 撰写，这里简单介绍一下 markdown 的语法，同时记录分享一些在编写文章的过程中遇到的问题。">
@@ -458,7 +458,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-07-03 17:06:30" itemprop="dateModified" datetime="2019-07-03T17:06:30+08:00">2019-07-03</time>
+                <time title="修改时间：2019-07-03 17:33:47" itemprop="dateModified" datetime="2019-07-03T17:33:47+08:00">2019-07-03</time>
               
             
           </span>
@@ -552,7 +552,9 @@
 <p>山有扶苏，隰有荷华。不见子都，乃见狂且。</p>
 </blockquote>
 <hr>
-<h2 id="3-代码区块"><a href="#3-代码区块" class="headerlink" title="3.代码区块"></a>3.代码区块</h2><p>可以用<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">\`\`\` C  </span><br><span class="line">#include &lt;stdio.h&gt;  </span><br><span class="line">int main() &#123;  </span><br><span class="line">    printf(&quot;hello world\n&quot;);</span><br><span class="line">&#125;  </span><br><span class="line">\`\`\`</span><br><span class="line"></span><br><span class="line">这样一段上下被```包围的语句，显示为：</span><br><span class="line">``` C  </span><br><span class="line">#include &lt;stdio.h&gt;  </span><br><span class="line">int main() &#123;  </span><br><span class="line">    printf(&quot;hello world\n&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="3-代码区块"><a href="#3-代码区块" class="headerlink" title="3.代码区块"></a>3.代码区块</h2><p>可以用连续的三个 ` 包裹一段代码，并指定一种语言，markdown会将其解释为一个代码区块：<br>``` C  </p>
+<p>#include &lt;stdio.h&gt;<br>int main() {<br>    printf(“hello world\n”);<br>}<br>```</p>
+<p>这样一段上下被```包围的语句，显示为：<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;  </span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;  </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"hello world\n"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>在一行文字内要想添加代码，可以用`标记：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">用 `len()` 函数可以获得 list 元素的个数。</span><br></pre></td></tr></table></figure></p>
 <p>用 <code>len()</code> 函数可以获得 list 元素的个数。</p>
 <hr>
