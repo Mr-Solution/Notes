@@ -100,23 +100,18 @@
 
 
 
-  <meta name="description" content="系统版本为 Ubuntu 16.04。   首先安装汉语语言包：">
-<meta name="keywords" content="文档,linux">
+  <meta name="description" content="strcpy和strcmp是C语言标准函数库(C Standard library)提供的函数，在操作字符串的时候有着非常大的用处。">
+<meta name="keywords" content="C">
 <meta property="og:type" content="article">
-<meta property="og:title" content="linux中文输入法">
-<meta property="og:url" content="https://mr-solution.github.io/Notes/2019/06/10/linux-中文输入法/index.html">
+<meta property="og:title" content="C语言实现strcpy和strcmp函数">
+<meta property="og:url" content="https://mr-solution.github.io/Notes/2019/07/10/C-语言实现-strcpy-和-strcmp-函数/index.html">
 <meta property="og:site_name" content="Forty-two">
-<meta property="og:description" content="系统版本为 Ubuntu 16.04。   首先安装汉语语言包：">
+<meta property="og:description" content="strcpy和strcmp是C语言标准函数库(C Standard library)提供的函数，在操作字符串的时候有着非常大的用处。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://mr-solution.github.io/Notes/2019/06/10/linux-中文输入法/fcitx.jpg">
-<meta property="og:image" content="https://mr-solution.github.io/Notes/2019/06/10/linux-中文输入法/fcitx-config1.jpg">
-<meta property="og:image" content="https://mr-solution.github.io/Notes/2019/06/10/linux-中文输入法/fcitx-config11.jpg">
-<meta property="og:image" content="https://mr-solution.github.io/Notes/2019/06/10/linux-中文输入法/fcitx-config111.jpg">
-<meta property="og:updated_time" content="2019-06-10T03:17:13.177Z">
+<meta property="og:updated_time" content="2019-07-12T11:30:52.202Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="linux中文输入法">
-<meta name="twitter:description" content="系统版本为 Ubuntu 16.04。   首先安装汉语语言包：">
-<meta name="twitter:image" content="https://mr-solution.github.io/Notes/2019/06/10/linux-中文输入法/fcitx.jpg">
+<meta name="twitter:title" content="C语言实现strcpy和strcmp函数">
+<meta name="twitter:description" content="strcpy和strcmp是C语言标准函数库(C Standard library)提供的函数，在操作字符串的时候有着非常大的用处。">
 
 
 
@@ -124,7 +119,7 @@
 
   
   
-  <link rel="canonical" href="https://mr-solution.github.io/Notes/2019/06/10/linux-中文输入法/">
+  <link rel="canonical" href="https://mr-solution.github.io/Notes/2019/07/10/C-语言实现-strcpy-和-strcmp-函数/">
 
 
 
@@ -134,7 +129,7 @@
   };
 </script>
 
-  <title>linux中文输入法 | Forty-two</title>
+  <title>C语言实现strcpy和strcmp函数 | Forty-two</title>
   
 
 
@@ -400,7 +395,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://mr-solution.github.io/Notes/Notes/2019/06/10/linux-中文输入法/">
+    <link itemprop="mainEntityOfPage" href="https://mr-solution.github.io/Notes/Notes/2019/07/10/C-语言实现-strcpy-和-strcmp-函数/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Mr-Solution">
@@ -417,7 +412,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">linux中文输入法
+          <h1 class="post-title" itemprop="name headline">C语言实现strcpy和strcmp函数
 
               
             
@@ -443,12 +438,24 @@
                 
               
 
-              <time title="创建时间：2019-06-10 11:04:32 / 修改时间：11:17:13" itemprop="dateCreated datePublished" datetime="2019-06-10T11:04:32+08:00">2019-06-10</time>
+              <time title="创建时间：2019-07-10 15:46:34" itemprop="dateCreated datePublished" datetime="2019-07-10T15:46:34+08:00">2019-07-10</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-07-12 19:30:52" itemprop="dateModified" datetime="2019-07-12T19:30:52+08:00">2019-07-12</time>
               
             
           </span>
@@ -465,7 +472,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/Notes/categories/操作系统/" itemprop="url" rel="index"><span itemprop="name">操作系统</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/Notes/categories/编程语言/" itemprop="url" rel="index"><span itemprop="name">编程语言</span></a></span>
 
                 
                 
@@ -500,20 +507,87 @@
       
 
       
-        <p><strong>系统版本为 Ubuntu 16.04。</strong>  </p>
-<p>首先安装汉语语言包：<br><a id="more"></a></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">sudo apt install language-pack-zh-hans</span></span><br></pre></td></tr></table></figure>
-<p>安装谷歌拼音输入法。执行这个命令，系统会自动安装 fcitx，googlepinyin，以及一些 fcitx 配置程序：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">sudo apt install fcitx-googlepinyin</span></span><br></pre></td></tr></table></figure>
-<p>打开 systemsettings -&gt; Language Support，系统会自动进行语言包搜索，按照系统提示确认安装。fcitx 是一个输入法框架。如图所示，在 Keyboard input method system 中选择 fcitx：</p>
-<p><img src="/Notes/2019/06/10/linux-中文输入法/fcitx.jpg" alt="div align=center"></p>
-<p>重启电脑，fcitx 输入法框架开始运行。在终端执行 fcitx-configtool，进行输入法配置。点击 “+” 添加Google Pinyin：</p>
-<p><img src="/Notes/2019/06/10/linux-中文输入法/fcitx-config1.jpg" alt="div align=center"></p>
-<p>若列表里没有 Google Pinyin，需要取消 Only Show Current Language 复选框：</p>
-<p><img src="/Notes/2019/06/10/linux-中文输入法/fcitx-config11.jpg" alt="div align=center"></p>
-<p>添加完输入法之后，在 Global Config 中可以看到输入法的切换方式：</p>
-<p><img src="/Notes/2019/06/10/linux-中文输入法/fcitx-config111.jpg" alt="div align=center"></p>
-<p>以上。</p>
+        <p><code>strcpy</code>和<code>strcmp</code>是C语言标准函数库(C Standard library)提供的函数，在操作字符串的时候有着非常大的用处。<br><a id="more"></a></p>
+<h2 id="strcpy"><a href="#strcpy" class="headerlink" title="strcpy"></a>strcpy</h2><p><code>strcpy</code>是C语言标准函数库(C Standard library)函数，其实现的功能是将源地址空间的字符串拷贝到目标字符串中。<br>头文件为 string.h，函数原型声明为：<code>char *strcpy(char *dest, const char *src)</code>，实现的功能为将从src地址开始且含有NULL结束符的字符串复制到以dest地址开始的内存空间。<br>The GNU C Library中 (源码下载方式为：git clone git://sourceware.org/git/glibc.git)，该函数的实现为：<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">char</span> *<span class="title">strcpy</span><span class="params">(<span class="keyword">char</span> *dest, <span class="keyword">const</span> <span class="keyword">char</span> *src)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">memcpy</span> (dest, src, <span class="built_in">strlen</span> (src) + <span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><code>strcpy()</code>调用<code>memcpy()</code>从src处复制<code>strlen(src)+1</code>个字符到dest。这里有一个问题，那就是<code>strlen(src)</code>是否正确。我们知道，C字符串结束的标志是’\0’，我们在初始化一个char型数组的时候，若没有指定数组大小，则编译器会自动在最后添加一个’\0’，我们也可以手动添加’\0’。但是，有的情况下，会发生’\0’丢失的现象：<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 以下情况会丢失'\0' */</span></span><br><span class="line"><span class="keyword">char</span> str[<span class="number">5</span>] = &#123;<span class="string">"hello"</span>&#125;;  <span class="comment">//数组长度不够加'\0'</span></span><br><span class="line"><span class="keyword">char</span> str[] = &#123;<span class="string">'h'</span>,<span class="string">'e'</span>,<span class="string">'l'</span>,<span class="string">'l'</span>,<span class="string">'o'</span>&#125;;  <span class="comment">//每个字符单独引号括起来,编译器自动获取数组长度为5</span></span><br><span class="line"><span class="comment">/* 以下情况会自动添加'\0' */</span></span><br><span class="line"><span class="keyword">char</span> str[] = &#123;<span class="string">"hello"</span>&#125;;  <span class="comment">//字符串赋值</span></span><br><span class="line"><span class="keyword">char</span> str[] = &#123;<span class="string">'h'</span>,<span class="string">'e'</span>,<span class="string">'l'</span>,<span class="string">'l'</span>,<span class="string">'o'</span>,<span class="string">'\0'</span>&#125;;  <span class="comment">//手动添加'\0'</span></span><br><span class="line"><span class="keyword">char</span> str[<span class="number">6</span>] = &#123;<span class="string">'h'</span>,<span class="string">'e'</span>,<span class="string">'l'</span>,<span class="string">'l'</span>,<span class="string">'o'</span>&#125;;  <span class="comment">//预留空位给'\0'</span></span><br></pre></td></tr></table></figure></p>
+<p>若参数 *src 指向的字符串是丢失’\0’的，那么<code>strlen(src)</code>会得到错误的结果，造成strcpy产生不可预知的后果。关于<code>strlen()</code>的原理，以及它在’\0’缺失的情况下如何获得字符数组长度，可以参考<a href="https://blog.csdn.net/hashmat/article/details/6054046" target="_blank" rel="noopener">博客</a>。</p>
+<blockquote>
+<p>如果在一个需要字符串的地方（例如strlen函数的参数）使用了一个不是以NUL字节结尾的字符序列，会发生什么情况呢？strlen函数将无法知道NUL字节是没有的，所以它将继续进行查找，一个字符接一个字符，直到它发现一个NUL字节为止。或许它找了几百个字符才找到，而strlen函数的这个返回值从本质上说是一个随机数。或者，如果函数试图访问系统分配给这个程序以外的内存范围，程序就会崩溃。  ——《C与指针》</p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">char</span> str[<span class="number">5</span>] = &#123;<span class="string">"hello"</span>&#125;;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"strlen str = %lu\n"</span>, <span class="built_in">strlen</span>(str));</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这段代码如果用 gcc 编译，则输出为6，若用 clang 编译，则输出为5。gcc 编译器对代码做了优化，具体是什么优化，并不清楚，这是不好的，因为我们不知道它是怎么实现的，有没有什么隐患，我们能做的只有尽量避免使用。</p>
+<p>若字符数组的长度不确定，会产生什么后果呢？<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">char</span> arr[] = <span class="string">"123456789"</span>;</span><br><span class="line">    <span class="keyword">char</span> str[<span class="number">5</span>] = &#123;<span class="string">"hello"</span>&#125;;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"strlen str = %lu\n"</span>, <span class="built_in">strlen</span>(str));</span><br><span class="line">    <span class="keyword">char</span> ds[<span class="number">10</span>];</span><br><span class="line">    <span class="built_in">strcpy</span>(ds, str);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"ds: %s#\n"</span>,ds);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br></pre></td></tr></table></figure></p>
+<p>这里出现了混乱，gcc显示strlen(str)=5，clang显示strlen(str)=14，clang的结果便于理解，因为若缺失’\0’，str就会和arr中的字符连在一起在内存栈区存放，先定义的在高地址，后定义的在低地址：”hello123456789\0”，故长度为14，而gcc的结果，结合上一个实验，依然无法推断原因，所以说<strong>依赖编译器优化的代码是危险的</strong>。<br>至于strcpy的结果，clang显示为：hello123456789#，gcc显示为：hello#。<br>clang编译的代码显示，strcpy多拷贝了一部分内存数据，这就造成了很严重的问题。</p>
+<blockquote>
+<p><strong>警告</strong><br>strlen根据’\0’判断字符串结束，那么恶意攻击者可以构造一个不包含’\0’的字符串，然后让数据写入数组之外的程序内存空间，从而进行破坏。</p>
+</blockquote>
+<p>再来看下面的代码：<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">char</span> s[] = <span class="string">"123456789"</span>;</span><br><span class="line">    <span class="keyword">char</span> d[] = <span class="string">"123"</span>;</span><br><span class="line">    <span class="built_in">strcpy</span>(d,s);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"result d:%s  s:%s\n"</span>,d,s);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>clang 编译后程序的运行结果为：result d:123456789  s:56789<br>gcc 编译后程序运行结果为：result  d:123456789  s:123456789</p>
+<p>clang 出现了奇怪的结果，我们来分析一下原因。首先，我们知道s和d都是在栈区的数据，s 在高地址，d 在低地址，我打印出了两者的地址，s：3318957810，d:3318957806。可以看到，内存是采用四字节对齐的，我们简单模拟一下内存中的数据：<br>
+<table>
+    <tr>
+        <td>地址</td>
+        <td>1</td> <td>2</td> <td>3</td> <td>4</td>
+        <td>5</td> <td>6</td> <td>7</td> <td>8</td>
+        <td>9</td> <td>10</td> <td>11</td> <td>12</td>
+        <td>13</td> <td>14</td>
+    </tr>
+    <tr>
+        <td>数据</td>
+        <td>1</td> <td>2</td> <td>3</td> <td>\0</td>
+        <td>1</td> <td>2</td> <td>3</td> <td>4</td>
+        <td>5</td> <td>6</td> <td>7</td> <td>8</td>
+        <td>9</td> <td>\0</td>
+    </tr>
+    <tr>
+        <td>字符串</td>
+        <td colspan="4">d</td>
+        <td colspan="10">s</td>
+    </tr>
+</table>
+</p>
+<p>字符数组d从地址1开始，占4个字节，字符数组s从地址5开始，占10个字节。<code>strcpy</code>将s复制到d之后：</p>
+
+<table>
+    <tr>
+        <td>地址</td>
+        <td>1</td> <td>2</td> <td>3</td> <td>4</td>
+        <td>5</td> <td>6</td> <td>7</td> <td>8</td>
+        <td>9</td> <td>10</td> <td>11</td> <td>12</td>
+        <td>13</td> <td>14</td>
+    </tr>
+    <tr>
+        <td>数据</td>
+        <td>1</td> <td>2</td> <td>3</td> <td>4</td>
+        <td>5</td> <td>6</td> <td>7</td> <td>8</td>
+        <td>9</td> <td>\0</td> <td>7</td> <td>8</td>
+        <td>9</td> <td>\0</td>
+    </tr>
+    <tr>
+        <td>字符串</td>
+        <td colspan="4">d</td>
+        <td colspan="10">s</td>
+    </tr>
+</table>
+
+<p>所以打印出来的d是123456789，而s是56789。这就造成了内存覆盖，可能产生无法预料的结果。  </p>
+<blockquote>
+<p><strong>警告：</strong><br>程序员必须保证目标字符数组的空间足以容纳需要复制的字符串。如果字符串比数组长，多余的字符仍被复制，它们将覆盖原先存储于数组后面的内存空间的值。strcpy无法解决这个问题，因为它无法判断目标字符数组的长度。  ——《C与指针》</p>
+</blockquote>
+<p><strong>总结一下strcpy的缺点：</strong>  </p>
+<ol>
+<li>strcpy 无法判断被复制的字符串在何处终止，可能会多复制一些内存数据到目标地址。从而产生内存溢出漏洞。</li>
+<li>strcpy 从高地址向低地址拷贝的时候，不会检测目标地址是否有足够的空间来容纳字符串，容易产生内存覆盖。</li>
+</ol>
+<p>关于strcpy的缺陷，用下面的例子来直观感受一下：<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* passwd.c */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdbool.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (argc != <span class="number">2</span>) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"Invalid params\n"</span>);</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">bool</span> check_result = <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">char</span> passwd[<span class="number">10</span>];</span><br><span class="line">    <span class="built_in">memset</span>(passwd,<span class="number">0</span>,<span class="number">10</span>);</span><br><span class="line">    <span class="built_in">strcpy</span>(passwd, argv[<span class="number">1</span>]);</span><br><span class="line">    <span class="keyword">if</span> (<span class="number">0</span> == <span class="built_in">strcmp</span>(<span class="string">"ubuntu"</span>, passwd)) &#123;</span><br><span class="line">        check_result = <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (check_result) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"Check passwd succ!\n"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"Check passwd failed!\n"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这是一个简单的密码判别函数，将输入的密码保存到字符数组passwd中，然后同期望的密码”ubuntu”匹配。如果我们将代码编译完，然后运行<code>./passwd 123456789012345</code>，结果显示：Check passwd succ!<br>我们期望的是提示”Check passwd failed!”，结果却提示了”Check passwd succ!”。说明尽管我们不知道密码是多少，但通过缓冲区溢出，绕过了密码的安全检验逻辑。<br>究其原因，是因为check_result和passwd两个变量同在栈区，check_out在高地址，passwd在低地址，strcpy的时候拷贝了超出目标地址passwd长度的字符，导致内存溢出，check_out变量被覆盖(被1234覆盖)，导致if条件判断为true。若输入为12345678900000，则不会，因为覆盖内存的是0000，if条件判断依然为false。</p>
+<p>为了使字符数组的复制更加安全，一般情况下更推荐使用<code>strncpy</code>函数：<br><code>char *strncpy(char *dst, char const *src, size_t len)</code>，添加了一个参数len来让程序员自己控制要复制的字符长度。</p>
+<blockquote>
+<p>和strcpy一样，strncpy把源字符串的字符复制到目标数组。然而，它总是正好向dst写入len个字符。如果strlen( src )的值小于len，dst数组就用额外的NUL字节填充到len长度。如果strlen( src )的值大于或等于len，那么只有len个字符被复制到dst中。注意！它的结果将不会以NUL字节结尾。  ——《C和指针》</p>
+</blockquote>
+<p>也就是说，strncpy函数解决了strcpy的第一个问题，它不会再多复制一些内容到目标地址中了，但是依然没有解决第二个问题，即内存覆盖的问题。</p>
+<p>现在要实现一个安全的strcpy就要在基于strncpy的基础上防止内存覆盖：<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">char</span> *<span class="title">my_strcpy</span><span class="params">(<span class="keyword">char</span> *dest, <span class="keyword">const</span> <span class="keyword">char</span> *src, <span class="keyword">size_t</span> len)</span> </span>&#123;</span><br><span class="line">    assert((dest != <span class="literal">NULL</span>) &amp;&amp; (src != <span class="literal">NULL</span>));</span><br><span class="line">    <span class="keyword">char</span> *r = dest;</span><br><span class="line">    <span class="keyword">if</span> (dest &lt; src &amp;&amp; (src - dest) &lt; len) &#123;</span><br><span class="line">        len = src - dest - <span class="number">1</span>;    <span class="comment">//截断被复制的数据，并预留一字节给\0</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span> (len &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        *r++ = *src++;</span><br><span class="line">        len--;</span><br><span class="line">    &#125;</span><br><span class="line">    *r++ = <span class="string">'\0'</span>;</span><br><span class="line">    <span class="keyword">return</span> dest;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="strcmp"><a href="#strcmp" class="headerlink" title="strcmp"></a>strcmp</h2><p>待续</p>
 
       
     </div>
@@ -537,9 +611,7 @@
       
         <div class="post-tags">
           
-            <a href="/Notes/tags/文档/" rel="tag"># 文档</a>
-          
-            <a href="/Notes/tags/linux/" rel="tag"># linux</a>
+            <a href="/Notes/tags/C/" rel="tag"># C</a>
           
         </div>
       
@@ -552,8 +624,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/Notes/2019/06/10/linux-强化学习环境配置/" rel="next" title="linux强化学习环境配置">
-                <i class="fa fa-chevron-left"></i> linux强化学习环境配置
+              <a href="/Notes/2019/07/09/python-print一个进度条/" rel="next" title="python print一个进度条">
+                <i class="fa fa-chevron-left"></i> python print一个进度条
               </a>
             
           </div>
@@ -561,10 +633,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/Notes/2019/06/11/python-包-模块-及import方法/" rel="prev" title="python 模块、包及 import 方法">
-                python 模块、包及 import 方法 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -608,8 +676,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -786,6 +863,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#strcpy"><span class="nav-text">strcpy</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#strcmp"><span class="nav-text">strcmp</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
