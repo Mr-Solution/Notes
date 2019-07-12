@@ -108,7 +108,7 @@
 <meta property="og:site_name" content="Forty-two">
 <meta property="og:description" content="我们都知道print(&amp;#39;\n&amp;#39;)表示换行，转义字符\n对应的意义就是换行，将当前输出位置移到下一行的开头。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-07-09T13:48:19.644Z">
+<meta property="og:updated_time" content="2019-07-12T11:53:14.876Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python print一个进度条">
 <meta name="twitter:description" content="我们都知道print(&amp;#39;\n&amp;#39;)表示换行，转义字符\n对应的意义就是换行，将当前输出位置移到下一行的开头。">
@@ -438,12 +438,24 @@
                 
               
 
-              <time title="创建时间：2019-07-09 19:51:01 / 修改时间：21:48:19" itemprop="dateCreated datePublished" datetime="2019-07-09T19:51:01+08:00">2019-07-09</time>
+              <time title="创建时间：2019-07-09 19:51:01" itemprop="dateCreated datePublished" datetime="2019-07-09T19:51:01+08:00">2019-07-09</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-07-12 19:53:14" itemprop="dateModified" datetime="2019-07-12T19:53:14+08:00">2019-07-12</time>
               
             
           </span>
@@ -500,6 +512,7 @@
 <p>但是，我们应该注意到，在使用<code>print()</code>函数的时候，其实不需要参数<code>\n</code>也会输出换行。这是因为，<code>print()</code>函数有一个默认参数<code>end=&#39;\n&#39;</code>，如果不显式指明<code>end</code>的值，那么默认输出换行。所以我们要想实现代码在一行循环出现，应该这样写：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">10</span>):</span><br><span class="line">    print(<span class="string">u"当前进度为 &#123;&#125;/10"</span>.format(i), end=<span class="string">'\r'</span>)  <span class="comment"># u表示字符串为unicode字符串，输出中文时防止乱码</span></span><br><span class="line">    time.sleep(<span class="number">0.25</span>）</span><br></pre></td></tr></table></figure></p>
 <p>了解了其中的原理，再写一个进度条就很容易了：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span><br><span class="line">count_down = <span class="number">10</span>  <span class="comment"># 倒计时时间，单位：秒</span></span><br><span class="line">interval = <span class="number">1</span>     <span class="comment"># 屏幕刷新的间隔时间，单位：秒</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>, int(count_down/interval)+<span class="number">1</span>):</span><br><span class="line">    print(<span class="string">"#"</span>*i + <span class="string">" "</span> + <span class="string">"%.2f"</span>%(i/(count_down/interval)*<span class="number">100</span>) + <span class="string">"%"</span>, end=<span class="string">'\r'</span>)</span><br><span class="line">    <span class="comment"># 因为浮点数的除法会出现结果不准确的情况，故使用 %.2f 规则化输出</span></span><br><span class="line">    time.sleep(interval)</span><br><span class="line">print(<span class="string">"\n加载完毕"</span>)</span><br></pre></td></tr></table></figure></p>
 <p>同进度条类似，我们可以实现一个在命令行“转圈”的等待效果：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span><br><span class="line">count_down = <span class="number">10</span>  <span class="comment"># 设置倒计时时间，单位：秒</span></span><br><span class="line">interval = <span class="number">0.25</span>  <span class="comment"># 设置屏幕刷新的间隔时间，单位：秒</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>, int(count_down/interval)): </span><br><span class="line">    ch_list = [<span class="string">"\\"</span>, <span class="string">"|"</span>, <span class="string">"/"</span>, <span class="string">"-"</span>]</span><br><span class="line">    index = i % <span class="number">4</span></span><br><span class="line">    print(<span class="string">"\rinstalling "</span> + ch_list[index], end=<span class="string">""</span>)</span><br><span class="line">    time.sleep(interval)</span><br><span class="line"></span><br><span class="line">print(<span class="string">"\rinstallation accomplished."</span>)</span><br></pre></td></tr></table></figure></p>
+<p>以上。</p>
 
       
     </div>
