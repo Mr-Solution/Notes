@@ -112,7 +112,7 @@
 <meta property="og:image" content="https://mr-solution.github.io/Notes/2019/06/10/linux-强化学习环境配置/add-apt.png">
 <meta property="og:image" content="https://mr-solution.github.io/Notes/2019/06/10/linux-强化学习环境配置/nvidia-smi.png">
 <meta property="og:image" content="https://mr-solution.github.io/Notes/2019/06/10/linux-强化学习环境配置/nvidia-details.png">
-<meta property="og:updated_time" content="2019-06-10T03:17:21.401Z">
+<meta property="og:updated_time" content="2019-11-04T09:02:06.974Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="linux强化学习环境配置">
 <meta name="twitter:description" content="Nvidia 驱动安装在 All Settings -&amp;gt;  Details 中查看自己的设备信息，如图：">
@@ -443,12 +443,24 @@
                 
               
 
-              <time title="创建时间：2019-06-10 10:49:44 / 修改时间：11:17:21" itemprop="dateCreated datePublished" datetime="2019-06-10T10:49:44+08:00">2019-06-10</time>
+              <time title="创建时间：2019-06-10 10:49:44" itemprop="dateCreated datePublished" datetime="2019-06-10T10:49:44+08:00">2019-06-10</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-11-04 17:02:06" itemprop="dateModified" datetime="2019-11-04T17:02:06+08:00">2019-11-04</time>
               
             
           </span>
@@ -506,33 +518,33 @@
 <p><a href="https://www.geforce.com/drivers" target="_blank" rel="noopener">这里</a>可以查看 GPU 支持的驱动版本。</p>
 <p>推荐使用 ppa 源安装驱动，方法如下：</p>
 <p>首先添加 ppa 源，执行如下语句：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">sudo add-apt-repository ppa:graphics-drivers/ppa</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span>sudo add-apt-repository ppa:graphics-drivers/ppa</span><br></pre></td></tr></table></figure>
 <p>获取最新的软件包源，将其添加至当前 apt 库中，执行后会显示当前可供下载的最新驱动版本号，已经老的驱动版本号。如图：</p>
 <p><img src="/Notes/2019/06/10/linux-强化学习环境配置/add-apt.png" alt="div align=center"></p>
 <p>最新的版本为 nvidia-410(410.66)，稍早的版本为 nvidia-390(390.87)。更新软件库信息，并下载 Nvidia 驱动：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">sudo apt update</span></span><br><span class="line"><span class="meta">$</span><span class="bash">sudo apt install nvidia-390</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span>sudo apt update</span><br><span class="line"><span class="meta">$</span>sudo apt install nvidia-390</span><br></pre></td></tr></table></figure>
 <p>安装三维图像库和 OpenGL 环境，并重启：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">sudo apt install mesa-common-dev</span></span><br><span class="line"><span class="meta">$</span><span class="bash">sudo apt install freeglut3-dev</span></span><br><span class="line"><span class="meta">$</span><span class="bash">sudo reboot</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span>sudo apt install mesa-common-dev</span><br><span class="line"><span class="meta">$</span>sudo apt install freeglut3-dev</span><br><span class="line"><span class="meta">$</span>sudo reboot</span><br></pre></td></tr></table></figure>
 <p>在终端输入 nvidia-smi，若输出如下，则说明安装成功：</p>
 <p><img src="/Notes/2019/06/10/linux-强化学习环境配置/nvidia-smi.png" alt="div align=center"></p>
 <p>All Setting -&gt; Details 内显示 Graphics 为 Geforce 920：</p>
 <p><img src="/Notes/2019/06/10/linux-强化学习环境配置/nvidia-details.png" alt="div align=center"></p>
-<p>在 .bashrc 中添加路径：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"><span class="built_in">export</span> LD_LIBRARY_PATH=<span class="variable">$LD_LIBRARY_PATH</span>:/usr/lib/nvidia-390</span></span><br></pre></td></tr></table></figure></p>
+<p>在 .bashrc 中添加路径：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span>export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib/nvidia-390</span><br></pre></td></tr></table></figure></p>
 <p>以上。</p>
 <h2 id="CUDA-安装"><a href="#CUDA-安装" class="headerlink" title="CUDA 安装"></a>CUDA 安装</h2><p>以 cuda8 为例，参考<a href="https://blog.csdn.net/u010837794/article/details/63251725" target="_blank" rel="noopener">博客</a>。</p>
 <p>很多博客都指出要先禁用 nouveau 服务，并加入黑名单，这个步骤很麻烦，同时也是没有必要的。首先，我们来看 nouveau 是什么。nouveau 是一个开源驱动项目，是 Linux KMS（kernel mode-setting）驱动的一部分，是一个公版的显卡驱动程序，可以驱动 AMD、高通的芯片，nvidia 也参与了开发，KMS 项目是为了在文本系统Linux中显示图形界面而诞生的开源项目。也就是说，这个 nouveau 和我们安装的 nvidia 驱动是冲突的，所以是要禁止掉的。但是，如果你的系统中两者并没有发生冲突，那么再处理这个公版驱动就没有必要了。CUDA 安装指南 <a href="https://developer.nvidia.com/compute/cuda/8.0/Prod2/docs/sidebar/CUDA_Installation_Guide_Linux-pdf" target="_blank" rel="noopener">Installation Guide for Linux</a> 中指明了需要 Disable the Nouveau drivers，但是在具体如何禁用的时候，文档又指出了:</p>
 <blockquote>
 <p>The Nouveau drivers are loaded if the following command prints anything:</p>
 </blockquote>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">lsmod | grep nouveau</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span>lsmod | grep nouveau</span><br></pre></td></tr></table></figure>
 <p>如果执行命令后什么也没有显示，则说明 Nouveau drivers 本身就没有被使用，是不用禁用的。</p>
 <p>直接执行如下命令：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">sudo sh cuda_8.0.61_375.26_linux.run</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span>sudo sh cuda_8.0.61_375.26_linux.run</span><br></pre></td></tr></table></figure>
 <p>或者</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">sudo sh cuda_8.0.61_375.26_linux.run --no-opengl-libs    <span class="comment"># 更推荐这种方式</span></span></span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span>sudo sh cuda_8.0.61_375.26_linux.run --no-opengl-libs    # 更推荐这种方式</span><br></pre></td></tr></table></figure>
 <p>按照提示一步步安装即可，注意安装驱动的选项要选择 no。</p>
 <p>然后安装补丁 Patch 2：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">sudo sh cuda_8.0.61.2_linux.run</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span>sudo sh cuda_8.0.61.2_linux.run</span><br></pre></td></tr></table></figure>
 <p>安装完成后，在环境变量中添加 CUDA，在 .bashrc 中添加：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> PATH=/usr/<span class="built_in">local</span>/cuda-8.0/bin:<span class="variable">$PATH</span></span><br><span class="line"><span class="built_in">export</span> LD_LIBRARY_PATH=/usr/<span class="built_in">local</span>/cuda-8.0/lib64<span class="variable">$LD_LIBRARY_PATH</span></span><br></pre></td></tr></table></figure>
 <p>重启电脑，即完成 CUDA 安装。</p>
@@ -632,7 +644,7 @@
 <p>以上。</p>
 <h2 id="mujoco-py-安装："><a href="#mujoco-py-安装：" class="headerlink" title="mujoco_py 安装："></a>mujoco_py 安装：</h2><p>首先，在 github 上下载源码：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">git <span class="built_in">clone</span> https://github.com/openai/mujoco-py.git</span></span><br></pre></td></tr></table></figure></p>
 <p>下载下来的代码中包含 requirements.txt，需要先安装里面的依赖包：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">pip install -r requirements.txt</span></span><br></pre></td></tr></table></figure></p>
-<p>安装完依赖之后安装 mujoco_py：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">pip install -u <span class="string">'mujoco-py&lt;1.50.2,&gt;=1.50.1'</span></span></span><br></pre></td></tr></table></figure></p>
+<p>安装完依赖之后安装 mujoco_py：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">pip install -U <span class="string">'mujoco-py&lt;1.50.2,&gt;=1.50.1'</span></span></span><br></pre></td></tr></table></figure></p>
 <p>安装过程中如果 gcc 报错，那么执行以下语句：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">sudo apt install libgl1-mesa-dev libgl1-mesa-glx libosmesa6-dev python3-pip python3-numpy python3-scipy</span></span><br></pre></td></tr></table></figure></p>
 <p>若出现错误：fatal error:GL/glew.g：没有那个文件或目录，解决方法：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install libglew-dbg libglew-dev libglew1.10 libglew-dbg libglewmx-dev libglewmx1.13 glew-utils</span><br></pre></td></tr></table></figure></p>
 <p>安装完毕后，测试安装结果。<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">cp -rf ~/Downloads/mujoco-py/xmls  ~/.<span class="built_in">local</span>/lib/python3.5/site-packages</span></span><br></pre></td></tr></table></figure></p>
@@ -778,7 +790,7 @@
                 
                   <a href="/Notes/archives/">
                 
-                    <span class="site-state-item-count">18</span>
+                    <span class="site-state-item-count">20</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -809,7 +821,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">7</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">9</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -852,7 +868,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">13</span>
+                      
+                    
+                    <span class="site-state-item-count">14</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
